@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-  has_secure_password  # Enables password encryption
+  has_many :places
+  has_secure_password
 end

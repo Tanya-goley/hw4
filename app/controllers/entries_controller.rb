@@ -1,4 +1,9 @@
 class EntriesController < ApplicationController
+  before_action :require_login
+end
+
+
+class EntriesController < ApplicationController
 
   def new
   end
