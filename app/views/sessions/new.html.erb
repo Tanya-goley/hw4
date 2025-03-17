@@ -1,18 +1,21 @@
-<h1>Login</h1>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 400px;">
+  <h2 class="text-center mb-4">Login</h2>
 
-<%= form_with url: login_path, local: true do |f| %>
-  <p>
-    <label for="email">Email</label>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <label for="password">Password</label>
-    <%= f.password_field :password %>
-  </p>
+  <%= form_tag "/sessions", method: "post" do %>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <%= text_field_tag "email", nil, class: "form-control", placeholder: "Enter your email" %>
+    </div>
 
-  <%= f.submit "Login" %>
-<% end %>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <%= password_field_tag "password", nil, class: "form-control", placeholder: "Enter your password" %>
+    </div>
 
-<%= flash[:alert] %>
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+  <% end %>
 
-<p>Don't have an account? <%= link_to "Signup", signup_path %></p>
+  <div class="text-center mt-3">
+    <small>Don't have an account? <%= link_to "Sign up", signup_path %></small>
+  </div>
+</div>

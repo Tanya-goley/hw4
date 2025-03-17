@@ -1,22 +1,22 @@
-<h1>New Entry</h1>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 500px;">
+  <h2 class="text-center mb-4">New Post</h2>
 
-<form action="/entries" method="post">
-  <input type="hidden" name="place_id" value="<%= params["place_id"] %>">
+  <%= form_with model: [@place, @entry], local: true, html: { multipart: true } do |f| %>
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <%= f.text_field :title, class: "form-control", placeholder: "Enter title" %>
+    </div>
 
-  <p>
-    <label for="title_input">Title</label>
-    <input type="text" name="title" id="title_input">
-  </p>
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <%= f.text_area :description, class: "form-control", placeholder: "Write something..." %>
+    </div>
 
-  <p>
-    <label for="description_input">Description</label>
-    <input type="text" name="description" id="description_input">
-  </p>
+    <div class="mb-3">
+      <label class="form-label">Upload Image</label>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
 
-  <p>
-    <label for="occurred_on_input">Occurred On</label>
-    <input type="date" name="occurred_on" id="occurred_on_input">
-  </p>
-
-  <button>Save</button>
-</form>
+    <button type="submit" class="btn btn-primary w-100">Create Post</button>
+  <% end %>
+</div>

@@ -1,10 +1,17 @@
-<h1>New Place</h1>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 500px;">
+  <h2 class="text-center mb-4">Add a New Place</h2>
 
-<form action="/places" method="post">
-  <p>
-    <label for="name_input">Name</label>
-    <input type="text" name="name" id="name_input">
-  </p>
+  <%= form_tag "/places", method: "post" do %>
+    <div class="mb-3">
+      <label class="form-label">Place Name</label>
+      <%= text_field_tag "name", nil, class: "form-control", placeholder: "Enter place name" %>
+    </div>
 
-  <button>Save</button>
-</form>
+    <div class="mb-3">
+      <label class="form-label">Location</label>
+      <%= text_field_tag "location", nil, class: "form-control", placeholder: "Enter location" %>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Add Place</button>
+  <% end %>
+</div>
