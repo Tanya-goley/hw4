@@ -3,7 +3,7 @@
 
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h4>Posts</h4>
-    <%= link_to "New Post", new_place_entry_path(@place), class: "btn btn-primary" %>
+    <%= link_to "New Post", new_place_entry_path(@place), class: "btn btn-primary mt-3" %>
   </div>
 
   <% if @place.entries.any? %>
@@ -12,11 +12,11 @@
         <div class="col-md-4">
           <div class="card shadow-sm mb-4">
             <% if entry.image.attached? %>
-              <img src="<%= url_for(entry.image) %>" class="card-img-top" alt="Post Image">
+              <img src="<%= url_for(entry.image) %>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Post Image">
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= entry.title %></h5>
-              <p class="text-muted"><%= entry.created_at.strftime("%Y-%m-%d") %></p>
+              <p class="text-muted"><%= entry.occurred_on.strftime("%Y-%m-%d") %></p>
               <p class="card-text"><%= truncate(entry.description, length: 100) %></p>
             </div>
           </div>
@@ -24,7 +24,9 @@
       <% end %>
     </div>
   <% else %>
-    <p class="text-muted text-center">No posts yet for this place.</p>
+    <p class="text-muted">
+    Date: <%= entry.occurred_on.present? ? entry.occurred_on.strftime("%Y-%m-%d") : "No date provided" %>
+    </p>
   <% end %>
 
   <div class="mt-4">

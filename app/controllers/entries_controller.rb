@@ -22,6 +22,6 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.require(:entry).permit(:title, :description, :occurred_on, :image)  # Allows image uploads
+    params.require(:entry).permit(:title, :description, :occurred_on, :image)
   end
 end
